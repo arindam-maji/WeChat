@@ -4,3 +4,4 @@ pillow
 channels
 uvicorn
 websockets
+dj_database_url
