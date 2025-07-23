@@ -131,7 +131,7 @@ LOGIN_URL = '/login/'  # matches the name in your url pattern
 import os
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+#STATICFILES_DIRS = [BASE_DIR / "static"]
 
 #STATICFILES_DIRS = [os.path.join(BASE_DIR, 'app1', 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
