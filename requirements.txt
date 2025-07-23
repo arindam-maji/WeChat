@@ -7,3 +7,4 @@ websockets
 dj_database_url
 psycopg2
 whitenoise
+dphane
