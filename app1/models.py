@@ -9,7 +9,7 @@ class UserInfo(models.Model) :
     user =  models.OneToOneField(User , on_delete= models.CASCADE)
     name  =  models.CharField(max_length=100)
     email  =  models.EmailField()
-    image = models.ImageField(upload_to='profile_imagesl/' , blank = True ,  null  = True)
+    image = models.ImageField(upload_to='profile_images/' , blank = True ,  null  = True)
 
     def __str__(self):
         return self.name
