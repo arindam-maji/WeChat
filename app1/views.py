@@ -101,20 +101,24 @@ def chatroom(request ,  id) :
     })
 
 
+from django.shortcuts import get_object_or_404
+
 @login_required
-def add_user_to_chatroom(request  , user_id) :
-    reciver  =  User.objects.get(id =  user_id)
+def add_user_to_chatroom(request, user_id):
+    receiver = get_object_or_404(User, id=user_id)
     sender = request.user
 
-    chatroom = ChatRoom.objects.filter(participants = sender).filter(participants = reciver)
+    chatroom_qs = ChatRoom.objects.filter(participants=sender).filter(participants=receiver)
 
-    if not  chatroom.exists() :
-        name  = f"{reciver.username}-{sender.username}"
-        chatroom  = ChatRoom.objects.create(name  = name)
-        chatroom.participants.add(reciver ,  sender)
+    if chatroom_qs.exists():
+        chatroom = chatroom_qs.first()
+    else:
+        name = f"{receiver.username}-{sender.username}"
+        chatroom = ChatRoom.objects.create(name=name)
+        chatroom.participants.add(receiver, sender)
         chatroom.save()
 
-    return redirect('chatroom' ,  id =  chatroom.id)
+    return redirect('chatroom', id=chatroom.id)
 
 
 @login_required
